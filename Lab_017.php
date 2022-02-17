@@ -1,4 +1,9 @@
 <?php
-    $book = ['NodeJS','JAVA','PHP','JQuery'];
-    echo $book[2];
+    $book = [
+                'NodeJS'=>'5',
+                'JAVA'=>'12',
+                'PHP'=>'8',
+                'JQuery'=>'3'
+            ];
+    echo $book['PHP'];
 ?>
