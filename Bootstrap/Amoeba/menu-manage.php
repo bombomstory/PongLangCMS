@@ -122,7 +122,7 @@
 <body>
 
 <div class="container">
-  <h2>การจัดการเมนู</h2>
+  <h2>ระบบการจัดการเมนู</h2>
   <p>ข้อมูลเมนูทั้งหมด</p>            
   <table class="table table-striped">
     <thead>
