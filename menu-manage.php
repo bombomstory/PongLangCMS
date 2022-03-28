@@ -1,4 +1,5 @@
 <?php
+    require_once("check_login.php");
     require_once("config.php"); 
     $do = (!empty($_GET["do"])) ? $_GET["do"] : "";
     $id = (!empty($_GET["id"])) ? $_GET["id"] : "";
@@ -55,16 +56,16 @@
           $row = mysqli_fetch_assoc($result);
           $max_orders = $row["max_orders"]+1;
 
-          $sql = "INSERT INTO plcms_menu (id, menuname, link, orders) VALUES (NULL, \"$menuname\", \"$link\", ".$max_orders.");";
+          $sql = "INSERT INTO `plcms_menu` (`id`, `menuname`, `link`, `orders`) VALUES (NULL, \"$menuname\", \"$link\", ".$max_orders.");";
           mysqli_query($conn, $sql);
 
           break;
         case "delete_menu":
-            $sql = "DELETE FROM plcms_menu WHERE plcms_menu.`id` = ".$id.";";
+            $sql = "DELETE FROM `plcms_menu` WHERE `plcms_menu`.`id` = ".$id.";";
             mysqli_query($conn, $sql);
             break;
         case "edit_menu":
-            $sql = "SELECT * FROM plcms_menu WHERE plcms_menu.`id` = ".$id.";";
+            $sql = "SELECT * FROM `plcms_menu` WHERE `plcms_menu`.`id` = ".$id.";";
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_assoc($result);
 ?>
@@ -114,12 +115,9 @@
   <title>การจัดการเมนู</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css
-">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
-"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js
-"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -140,8 +138,8 @@
     <tbody>
 
 <?php
-    $sql = "SELECT * FROM plcms_menu  \n"
-    . "ORDER BY plcms_menu.`orders` ASC;";
+    $sql = "SELECT * FROM `plcms_menu`  \n"
+    . "ORDER BY `plcms_menu`.`orders` ASC;";
     $result = mysqli_query($conn, $sql);
 
     while($row = mysqli_fetch_assoc($result)){
@@ -188,5 +186,8 @@
   </table>
 </div>
 
+<div align='center'>
+  <a href="logout.php">ออกจากระบบ</a>
+</div>
 </body>
 </html>
